@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ hero.metadata.get('title', "Home") }} - Steve's CV{% endblock %}
+
+{% block content %}
+<header style="background: linear-gradient(to right, {{ hero.metadata.design.background.gradient_start }}, {{ hero.metadata.design.background.gradient_end }}); color: white; padding: 4rem 2rem; text-align: center;">
+    {% if hero %}
+        <h1>{{ hero.metadata.title }}</h1>
+        <div>
+            {{ hero.content | safe }}
+        </div>
+    {% else %}
+        <h1>Welcome to my CV</h1>
+    {% endif %}
+</header>
+{% endblock %}

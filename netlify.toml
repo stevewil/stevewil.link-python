@@ -1,0 +1,10 @@
+[build]
+# Command to build the site
+command = "python build.py"
+
+# Directory to publish
+publish = "build/"
+
+[build.environment]
+# Specify the Python version
+PYTHON_VERSION = "3.8"
