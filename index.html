@@ -4,7 +4,7 @@
 
 {% block content %}
     {% if hero and hero.metadata.get('design', {}).get('background') %}
-    <header style="background: linear-gradient(to right, {{ hero.metadata.design.background.gradient_start }}, {{ hero.metadata.design.background.gradient_end }}); color: white; padding: 4rem 2rem; text-align: center;">
+    <header style="background: linear-gradient(to right, {{ hero.metadata.get('design', {}).get('background', {}).get('gradient_start') }}, {{ hero.metadata.get('design', {}).get('background', {}).get('gradient_end') }}); color: white; padding: 4rem 2rem; text-align: center;">
         <h1>{{ hero.metadata.title }}</h1>
         <div>
             {{ hero.content | safe }}
