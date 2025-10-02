@@ -1,5 +1,6 @@
 import os
 import frontmatter
+from frontmatter.default_handlers import TOMLHandler
 from flask import Flask, render_template
 from markdown import markdown
 
@@ -14,7 +15,7 @@ def get_page_data(path):
     if not os.path.exists(full_path):
         return None
     
-    post = frontmatter.load(full_path)
+    post = frontmatter.load(full_path, handler=TOMLHandler())
     post.content = markdown(post.content)
     return post
 
