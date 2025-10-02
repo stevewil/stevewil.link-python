@@ -21,14 +21,15 @@ def get_page_data(path):
 @app.route("/")
 def index():
     """Renders the home page by assembling widgets."""
-    # In the Hugo site, the homepage is built from `content/home/*.md` files.
-    # We will replicate that logic here eventually.
-    # For now, let's just render a basic homepage.
-    
     # Example: Load the 'hero' widget data
     hero_widget = get_page_data('home/hero.md')
     
-    return render_template("index.html", hero=hero_widget)
+    # Provide a default title if the widget doesn't exist
+    page_title = "Home"
+    if hero_widget and 'title' in hero_widget.metadata:
+        page_title = hero_widget.metadata['title']
+    
+    return render_template("index.html", hero=hero_widget, title=page_title)
 
 if __name__ == "__main__":
     app.run(debug=True)
