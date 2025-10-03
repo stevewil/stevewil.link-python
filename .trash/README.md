@@ -56,7 +56,7 @@ stevewil.link-python/
 
 To add or edit a section on the homepage, simply create or modify a `.txt` file in the `content/home/` directory.
 
-Each file must contain a frontmatter section at the top, enclosed by `---`, `+++`, or `+`. The frontmatter must include:
+Each file must contain a frontmatter section at the top, enclosed by `---`. The frontmatter must include:
 
 - `widget`: The name of the widget, which corresponds to a template in `templates/widgets/`.
 - `active`: Set to `true` to display the widget.
@@ -68,12 +68,12 @@ Any content below the frontmatter will be rendered as Markdown.
 ### Example (`quote.txt`):
 
 ```text
-+
-widget = "quote"
-active = true
-weight = 90
-title = "Quote"
-+
+---
+widget: "quote"
+active: true
+weight: 90
+title: "Quote"
+---
 
 *"The future is already here – it's just not evenly distributed."* - William Gibson
 ```
