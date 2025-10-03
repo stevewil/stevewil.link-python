@@ -1,6 +1,6 @@
 {% set design = widget.metadata.design %}
-{% set cta = widget.metadata.cta %}
-{% set cta_alt = widget.metadata.cta_alt %}
+{% set cta = widget.metadata.get('cta', {}) %}
+{% set cta_alt = widget.metadata.get('cta_alt', {}) %}
 
 <section id="{{ widget.metadata.widget }}" class="hero" style="
     {% if design.background.image %}
