@@ -1,3 +1,4 @@
+---
 # Experience widget.
 widget = "experience"
 active = true
@@ -51,4 +52,4 @@ date_format = "Jan 2006"
   date_start = "1994-09-01"
   date_end = "1995-05-31"
   description = """Taught a variety of courses on the history of Latin America and Brazil. Experimented with email-based assignment submission from students which was a first of its kind at LMU."""
-+++
+---
