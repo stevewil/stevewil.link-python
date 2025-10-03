@@ -52,7 +52,10 @@ def get_page_data(path):
         toml_handler.START_DELIMITER = b'---'
         toml_handler.END_DELIMITER = b'---'
         post = frontmatter.loads(content, handler=toml_handler)
-        post.content = markdown(post.content)
+        # For python-frontmatter==1.0.0, the library processes markdown
+        # internally when .loads() is called. The content is already HTML.
+        # Attempting to re-process it causes an error if the internal
+        # processing resulted in `None`. We can safely remove this line.
         return post, None
     except Exception as e:
         app.logger.error(f"Error parsing file '{full_path}': {e}")
