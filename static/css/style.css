@@ -176,3 +176,93 @@ body {
     text-decoration: none;
     border-bottom: 1px solid #2b94c3;
 }
+
+/* --- Book Page Styles --- */
+.book-widget {
+    background-color: #e5f3ed; /* Light mint */
+    color: #333;
+}
+
+.book-widget.alt {
+    background-color: #fff;
+}
+
+.book-title-widget .widget-container {
+    text-align: left;
+}
+
+.book-title {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    color: #3c935f; /* Green */
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.book-authors {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #b36d3a; /* Brown/Rust */
+    margin-bottom: 1rem;
+}
+
+.book-copyright {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.book-intro-widget .prose {
+    text-align: left;
+    max-width: 720px;
+}
+
+.book-for-you-widget {
+    background-color: #bca485; /* Tan/Beige */
+    color: #fff;
+}
+
+.book-for-you-widget h2 {
+    color: #fff;
+}
+
+.book-for-you-list {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    max-width: 650px;
+    margin: 2rem auto 0;
+}
+
+.book-for-you-list li {
+    font-size: 1.1rem;
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.book-for-you-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #3c935f; /* Green */
+    font-weight: bold;
+}
+
+.review-item {
+    background-color: #fff;
+    border-left: 5px solid #bca485; /* Tan/Beige */
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.review-item blockquote {
+    margin: 0 0 1rem 0;
+    font-style: italic;
+}
+
+.review-item footer {
+    font-weight: bold;
+    color: #3c935f; /* Green */
+}
+}

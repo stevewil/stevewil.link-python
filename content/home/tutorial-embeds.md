@@ -1,6 +1,6 @@
 ---
 widget: "default"
-active: true
+active: false
 weight: 40
 title: "Setup Tutorial"
 ---

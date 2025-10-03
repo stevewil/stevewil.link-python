@@ -1,6 +1,6 @@
 ---
 widget: "default"
-active: true
+active: false
 weight: 60
 title: "API Reference"
 ---
