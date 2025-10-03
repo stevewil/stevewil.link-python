@@ -1,7 +1,7 @@
 import os
 import frontmatter
 import logging
-from frontmatter.default_handlers import TOMLHandler as BaseTOMLHandler
+from frontmatter.handlers import TOMLHandler as BaseTOMLHandler
 from flask import Flask, render_template
 from markdown import markdown
 
