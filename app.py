@@ -19,13 +19,13 @@ logging.basicConfig(
 CONTENT_DIR = 'content'
 
 # --- Custom Frontmatter Handlers ---
-class TOMLHandler(BaseTOMLHandler):
+class TriplePlusTOMLHandler(BaseTOMLHandler):
     """
     Custom TOML handler to use '+++' as delimiters.
     This is the default behavior, but we define it for clarity.
     """
-    START_DELIMITER = "+++"
-    END_DELIMITER = "+++"
+    START_DELIMITER = b"+++"
+    END_DELIMITER = b"+++"
 
 class PlusTOMLHandler(BaseTOMLHandler):
     """Custom TOML handler to use '+' as delimiters."""
@@ -41,7 +41,7 @@ def get_page_data(path):
     try:
         with open(full_path, 'r', encoding='utf-8') as f:
             first_line = f.readline().strip()
-        handler = PlusTOMLHandler() if first_line == '+' else TOMLHandler()
+        handler = PlusTOMLHandler() if first_line == '+' else TriplePlusTOMLHandler()
         post = frontmatter.load(full_path, handler=handler)
         post.content = markdown(post.content)
         return post
