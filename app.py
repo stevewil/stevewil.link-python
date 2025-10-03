@@ -36,20 +36,17 @@ def get_page_data(path):
         return None
 
     try:
-        with open(full_path, 'r', encoding='utf-8') as f:
-            first_line = f.readline().strip()
+        with open(full_path, 'r', encoding='utf-8') as f_in:
+            content = f_in.read()
 
-        # Default handler is YAML. If we see TOML delimiters, use TOMLHandler.
-        if first_line in ('+++', '+'):
-            toml_handler = TOMLHandler()
-            # The TOMLHandler in this library version defaults to '---' delimiters.
-            # We must explicitly set the correct delimiter based on the file's first line.
-            toml_handler.START_DELIMITER = first_line.encode('utf-8')
-            toml_handler.END_DELIMITER = first_line.encode('utf-8')
-            post = frontmatter.load(full_path, handler=toml_handler)
-        else:
-            # Let frontmatter use its default YAML handler
-            post = frontmatter.load(full_path)
+        # Standardize non-standard delimiters before parsing.
+        # Replace '+' and '+++' with '---' which is the default for the library.
+        if content.startswith('+++\n'):
+            content = content.replace('+++', '---', 2)
+        elif content.startswith('+\n'):
+            content = content.replace('+', '---', 2)
+
+        post = frontmatter.loads(content)
         post.content = markdown(post.content)
         return post
     except Exception as e:
