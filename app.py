@@ -44,11 +44,12 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f_in:
             content = f_in.read()
 
-        post = frontmatter.loads(content)
+        # Explicitly use the TOML handler as the content files use TOML syntax.
+        post = frontmatter.loads(content, handler=TOMLHandler())
         post.content = markdown(post.content)
         return post
     except Exception as e:
-        app.logger.error(f"Error parsing file {full_path}: {e}")
+        app.logger.error(f"Error parsing file '{full_path}': {e}")
         return None
 
 @app.route("/")
@@ -57,6 +58,7 @@ def index():
     app.logger.info("--- Rendering homepage ---")
     home_dir = os.path.join(CONTENT_DIR, 'home')
     widgets = []
+    errors = []
     if os.path.exists(home_dir):
         filenames = sorted(os.listdir(home_dir))
         app.logger.debug(f"Found files in content/home: {filenames}")
@@ -69,15 +71,25 @@ def index():
                     widgets.append(widget_data)
                 elif widget_data:
                     app.logger.debug(f"'{filename}' is inactive. Skipping.")
+                else:
+                    # This means get_page_data returned None due to a parsing error.
+                    errors.append(f"Failed to parse '{os.path.join('home', filename)}'. Check log/debug.log for details.")
     
     # Sort widgets by weight
     widgets.sort(key=lambda w: w.metadata.get('weight', 0))
     app.logger.debug(f"Final sorted widget order: {[w.metadata.get('widget') for w in widgets]}")
     
-    # For now, we can assume the first widget is the hero for the title
     if not widgets:
         app.logger.warning("No active widgets found. The page will be blank.")
-        return "No active widgets found. Please check your content files.", 200
+        error_message = f"No active widgets found in the '{home_dir}' directory."
+        if errors:
+            error_html = f"<h1>{error_message}</h1>"
+            error_html += "<h2>The following files could not be parsed:</h2><ul>"
+            error_html += "".join([f"<li>{e}</li>" for e in errors])
+            error_html += "</ul><p>This is often due to incorrect frontmatter syntax (e.g., using YAML format for a TOML file).</p>"
+            return error_html, 200
+        return error_message, 200
+
     page_title = widgets[0].metadata.get('title', "Home")
     
     return render_template("index.html", widgets=widgets, title=page_title)
