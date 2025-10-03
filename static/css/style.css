@@ -94,6 +94,40 @@ body {
     max-width: 600px;
 }
 
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: -0.5rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    border: 2px solid transparent;
+}
+
+.button-primary {
+    background-color: #fff;
+    color: #333;
+}
+
+.button-primary:hover {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
 /* Experience Widget Styles */
 .experience-container h2 {
     text-align: center;
