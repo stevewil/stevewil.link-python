@@ -5,6 +5,10 @@ import time
 from flask import Flask, render_template
 from datetime import datetime
 from markdown import markdown
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -40,7 +44,7 @@ def markdown_filter(s):
 CONTENT_DIR = 'content'
 
 def get_page_data(path):
-    """Loads and parses a Markdown file with front matter."""
+    """Loads and parses a content file with front matter."""
     full_path = os.path.join(CONTENT_DIR, path)
     if not os.path.exists(full_path):
         return None, f"File not found at '{full_path}'"
@@ -54,9 +58,12 @@ def get_page_data(path):
         # any extra handlers, we use the most stable parsing path.
         post = frontmatter.loads(content)
         
-        # The content body of the post is markdown, so we convert it to HTML.
-        post.content = markdown(post.content)
+        # Conditionally process content based on file extension.
+        # .txt files are treated as Markdown, .html files are used as-is.
+        if path.endswith('.txt'):
+            post.content = markdown(post.content)
         return post, None
+
     except Exception as e:
         app.logger.error(f"Error parsing file '{full_path}': {e}")
         return None, str(e)
@@ -68,11 +75,14 @@ def index():
     home_dir = os.path.join(CONTENT_DIR, 'home')
     widgets = []
     errors = []
+    # Read the desired file type from environment variables, defaulting to 'txt'
+    content_file_type = os.getenv('CONTENT_FILE_TYPE', 'txt')
+
     if os.path.exists(home_dir):
         filenames = sorted(os.listdir(home_dir))
         app.logger.debug(f"Found files in content/home: {filenames}")
         for filename in filenames:
-            if filename.endswith('.txt'):
+            if filename.endswith(f'.{content_file_type}'):
                 filepath = os.path.join('home', filename)
                 app.logger.debug(f"Processing widget file: {filepath}")
                 widget_data, error = get_page_data(filepath)
