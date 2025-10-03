@@ -1,7 +1,7 @@
 import os
 import frontmatter
 import logging
-from frontmatter.default_handlers import TOMLHandler
+from frontmatter.default_handlers import TOMLHandler as BaseTOMLHandler
 from flask import Flask, render_template
 from markdown import markdown
 
@@ -18,14 +18,31 @@ logging.basicConfig(
 # Configuration
 CONTENT_DIR = 'content'
 
+# --- Custom Frontmatter Handlers ---
+class TOMLHandler(BaseTOMLHandler):
+    """
+    Custom TOML handler to use '+++' as delimiters.
+    This is the default behavior, but we define it for clarity.
+    """
+    START_DELIMITER = "+++"
+    END_DELIMITER = "+++"
+
+class PlusTOMLHandler(BaseTOMLHandler):
+    """Custom TOML handler to use '+' as delimiters."""
+    START_DELIMITER = "+"
+    END_DELIMITER = "+"
+
 def get_page_data(path):
     """Loads and parses a Markdown file with front matter."""
     full_path = os.path.join(CONTENT_DIR, path)
     if not os.path.exists(full_path):
         return None
-    
+
     try:
-        post = frontmatter.load(full_path, handler=TOMLHandler())
+        with open(full_path, 'r', encoding='utf-8') as f:
+            first_line = f.readline().strip()
+        handler = PlusTOMLHandler() if first_line == '+' else TOMLHandler()
+        post = frontmatter.load(full_path, handler=handler)
         post.content = markdown(post.content)
         return post
     except Exception as e:
