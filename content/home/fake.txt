@@ -1,8 +1,8 @@
 ---
-widget = "fake"
-active = true
-weight = 55
-title = "This is a Fake Widget"
+widget: "fake"
+active: true
+weight: 55
+title: "This is a Fake Widget"
 ---
 
 This is the content for the fake widget. It's written in **Markdown**.

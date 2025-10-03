@@ -1,9 +1,9 @@
 ---
-widget = "hero"
-active = true
-weight = 10
+widget: "hero"
+active: true
+weight: 10
 
-title = "Steve Williams"
+title: "Steve Williams"
 
 design:
   background:

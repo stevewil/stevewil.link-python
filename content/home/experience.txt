@@ -1,13 +1,13 @@
 ---
 # Experience widget.
-widget = "experience"
-active = true
-weight = 20
+widget: "experience"
+active: true
+weight: 20
 
-title = "Experience"
-subtitle = ""
+title: "Experience"
+subtitle: ""
 
-date_format = "Jan 2006"
+date_format: "Jan 2006"
 
 experience:
   - title: "Information Technology Consultant -- Expert"
