@@ -1,6 +1,7 @@
 import os
 import frontmatter
 import logging
+import time
 from frontmatter import TOMLHandler
 from flask import Flask, render_template
 from datetime import datetime
@@ -17,6 +18,11 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)s: %(message)s'
 )
 # Configuration
+
+@app.context_processor
+def inject_cache_buster():
+    """Injects a cache-busting query string into templates."""
+    return dict(cache_buster=int(time.time()))
 
 @app.template_filter('date_format')
 def date_format_filter(s, format_str):
