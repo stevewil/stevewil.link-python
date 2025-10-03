@@ -35,7 +35,9 @@
 </head>
 <body>
     <nav class="navbar">
-        {% for widget in widgets %}<a href="#{{ widget.metadata.widget }}">{{ widget.metadata.title }}</a>{% endfor %}
+        {% for widget in widgets %}
+            {% if widget.metadata.widget != 'hero' %}<a href="#{{ widget.metadata.widget }}">{{ widget.metadata.title }}</a>{% endif %}
+        {% endfor %}
     </nav>
     {% block content %}{% endblock %}
 </body>
