@@ -1,6 +1,6 @@
 # Personal CV Site - Python Static Generator
 
-This project is a simple, file-based static site generator for a personal CV or portfolio website. It uses Python with Flask and Flask-Frozen to read content from text files and generate a static HTML site.
+This project is a simple, file-based static site generator for a personal CV or portfolio website. It uses Python with Flask and Frozen-Flask to read content from text files and generate a static HTML site.
 
 ## How it Works
 
@@ -9,7 +9,7 @@ The site is built around a "widget" concept. Each section of the homepage (like 
 The build process is as follows:
 
 1.  The `python build.py` script is executed.
-2.  It uses `Flask-Frozen` to crawl the Flask application defined in `app.py`.
+2.  It uses `Frozen-Flask` to crawl the Flask application defined in `app.py`.
 3.  The main `/` route in `app.py` scans the `content/home/` directory for `.txt` files.
 4.  For each file, it parses the YAML frontmatter (the metadata at the top) and the content.
 5.  It filters for widgets marked as `active = true` and sorts them by their `weight`.

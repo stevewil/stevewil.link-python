@@ -1,5 +1,5 @@
 Flask
-Flask-Frozen
+Frozen-Flask
 python-frontmatter
 Markdown
 python-dotenv
