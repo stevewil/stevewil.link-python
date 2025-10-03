@@ -82,6 +82,26 @@ body {
     background-color: #e37c4b; /* Lighter blue from original gradient */
 }
 
+.hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero .widget-container {
+    position: relative;
+    z-index: 2;
+}
+
 .hero h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 3rem;
@@ -194,7 +214,7 @@ body {
 .book-title {
     font-family: 'Georgia', serif;
     font-size: 3.5rem;
-    color: #3c935f; /* Green */
+    color: #fff; /* Changed for hero background */
     font-weight: 700;
     margin-bottom: 0.5rem;
 }
@@ -202,7 +222,7 @@ body {
 .book-authors {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color: #b36d3a; /* Brown/Rust */
+    color: #fff; /* Changed for hero background */
     margin-bottom: 1rem;
 }
 

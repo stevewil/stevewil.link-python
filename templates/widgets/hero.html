@@ -3,13 +3,18 @@
 {% set cta_alt = widget.metadata.cta_alt %}
 
 <section id="{{ widget.metadata.widget }}" class="hero" style="
-    {% if design.background.gradient_start and design.background.gradient_end %}
-    background: linear-gradient(to right, {{ design.background.gradient_start }}, {{ design.background.gradient_end }});
-    {% elif design.background.color %}
-    background-color: {{ design.background.color }};
+    {% if design.background.image %}
+    background-image: url('{{ design.background.image }}');
+    {% else %}
+        {% if design.background.gradient_start and design.background.gradient_end %}
+        background: linear-gradient(to right, {{ design.background.gradient_start }}, {{ design.background.gradient_end }});
+        {% elif design.background.color %}
+        background-color: {{ design.background.color }};
+        {% endif %}
     {% endif %}
     color: {% if design.background.text_color_light %}#fff{% else %}#333{% endif %};
 ">
+    <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ design.background.image_darken | default(0.5) }});"></div>
     <div class="widget-container">
         <h1>{{ widget.metadata.title }}</h1>
         {% if widget.metadata.subtitle %}
