@@ -39,14 +39,16 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f:
             first_line = f.readline().strip()
 
-        handler = TOMLHandler()
-        # Set delimiters based on the first line and encode to bytes,
-        # which is required for python-frontmatter==1.0.0.
-        if first_line == '+':
+        # Default handler is YAML. If we see TOML delimiters, use TOMLHandler.
+        if first_line in ('+++', '+'):
+            handler = TOMLHandler()
+            # Set delimiters and encode to bytes for python-frontmatter==1.0.0.
             handler.START_DELIMITER = b"+"
             handler.END_DELIMITER = b"+"
-
-        post = frontmatter.load(full_path, handler=handler)
+            post = frontmatter.load(full_path, handler=handler)
+        else:
+            # Let frontmatter use its default YAML handler
+            post = frontmatter.load(full_path)
         post.content = markdown(post.content)
         return post
     except Exception as e:
@@ -77,7 +79,10 @@ def index():
     app.logger.debug(f"Final sorted widget order: {[w.metadata.get('widget') for w in widgets]}")
     
     # For now, we can assume the first widget is the hero for the title
-    page_title = widgets[0].metadata.get('title') if widgets else "Home"
+    if not widgets:
+        app.logger.warning("No active widgets found. The page will be blank.")
+        return "No active widgets found. Please check your content files.", 200
+    page_title = widgets[0].metadata.get('title', "Home")
     
     return render_template("index.html", widgets=widgets, title=page_title)
 
