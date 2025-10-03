@@ -1,4 +1,4 @@
-from flask_frozen import Freezer
+from flask_frozen import Freezer # The package is Frozen-Flask, but the import is flask_frozen
 from app import app
 
 app.config['FREEZER_DESTINATION'] = 'build'
