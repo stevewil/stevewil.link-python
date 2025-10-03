@@ -44,20 +44,9 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f_in:
             content = f_in.read()
 
-        # The content files use TOML syntax but with '---' delimiters.
-        # We must configure the TOMLHandler to use '---' instead of its
-        # default '+++' for this to work.
-        toml_handler = TOMLHandler()
-        # The delimiters MUST be byte strings for this library version.
-        toml_handler.START_DELIMITER = b'---'
-        toml_handler.END_DELIMITER = b'---'
- 
-        # By passing a no-op postprocessor, we prevent the library's buggy
-        # internal markdown conversion from running, which causes the 'NoneType' error.
-        # The function signature for the postprocessor is (text, metadata).
-        post = frontmatter.loads(content, handler=toml_handler, postprocessor=lambda text, metadata: None)
- 
-        # Now that we have the raw markdown content, we can safely convert it.
+        # Use the default YAML parser, which is more stable.
+        # The content files will be updated to use YAML syntax.
+        post = frontmatter.loads(content)
         post.content = markdown(post.content)
         return post, None
     except Exception as e:
