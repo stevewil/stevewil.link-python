@@ -1,3 +1,4 @@
++++
 # Experience widget.
 widget = "experience"
 headless = true
