@@ -1,0 +1,13 @@
+---
+widget = "fake"
+active = true
+weight = 55
+title = "This is a Fake Widget"
+---
+
+This is the content for the fake widget. It's written in **Markdown**.
+
+*   Here is a list item.
+*   And another one.
+
+This is just a test to ensure that the file parsing and rendering logic is working correctly.
