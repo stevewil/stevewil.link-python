@@ -51,11 +51,12 @@ def get_page_data(path):
         # The delimiters MUST be byte strings for this library version.
         toml_handler.START_DELIMITER = b'---'
         toml_handler.END_DELIMITER = b'---'
-
+ 
         # By passing a no-op postprocessor, we prevent the library's buggy
         # internal markdown conversion from running, which causes the 'NoneType' error.
-        post = frontmatter.loads(content, handler=toml_handler, postprocessor=lambda post: None)
-
+        # The function signature for the postprocessor is (text, metadata).
+        post = frontmatter.loads(content, handler=toml_handler, postprocessor=lambda text, metadata: None)
+ 
         # Now that we have the raw markdown content, we can safely convert it.
         post.content = markdown(post.content)
         return post, None
