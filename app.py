@@ -60,7 +60,7 @@ def get_page_data(path):
         
         # Conditionally process content based on file extension.
         # .txt files are treated as Markdown, .html files are used as-is.
-        if path.endswith('.txt'):
+        if path.endswith('.md'):
             post.content = markdown(post.content)
         return post, None
 
@@ -76,7 +76,7 @@ def index():
     widgets = []
     errors = []
     # Read the desired file type from environment variables, defaulting to 'txt'
-    content_file_type = os.getenv('CONTENT_FILE_TYPE', 'txt')
+    content_file_type = os.getenv('CONTENT_FILE_TYPE', 'md')
 
     if os.path.exists(home_dir):
         filenames = sorted(os.listdir(home_dir))

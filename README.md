@@ -11,7 +11,7 @@ The build process is as follows:
 1.  The `python build.py` script is executed.
 2.  It uses `Flask-Frozen` to crawl the Flask application defined in `app.py`.
 3.  The main `/` route in `app.py` scans the `content/home/` directory for `.txt` files.
-4.  For each file, it parses the frontmatter (the metadata at the top) and the Markdown content.
+4.  For each file, it parses the YAML frontmatter (the metadata at the top) and the content.
 5.  It filters for widgets marked as `active = true` and sorts them by their `weight`.
 6.  The sorted list of widgets is passed to the `templates/index.html` template.
 7.  The `index.html` template loops through the widgets and dynamically includes a corresponding partial template from `templates/widgets/` based on the `widget` key in the frontmatter (e.g., `widget = "hero"` will look for `hero.html`).
@@ -30,8 +30,8 @@ stevewil.link-python/
 │
 ├── content/
 │   └── home/
-│       ├── hero.txt      # Content for the hero widget
-│       ├── experience.txt# Content for the experience widget
+│       ├── hero.md       # Content for the hero widget
+│       ├── experience.md # Content for the experience widget
 │       └── ...           # Other content widget files
 │
 ├── templates/
@@ -54,7 +54,7 @@ stevewil.link-python/
 
 ## Content Management
 
-To add or edit a section on the homepage, simply create or modify a `.txt` file in the `content/home/` directory.
+To add or edit a section on the homepage, simply create or modify a `.md` file in the `content/home/` directory.
 
 Each file must contain a frontmatter section at the top, enclosed by `---`. The frontmatter must include:
 
@@ -65,9 +65,9 @@ Each file must contain a frontmatter section at the top, enclosed by `---`. The 
 
 Any content below the frontmatter will be rendered as Markdown.
 
-### Example (`quote.txt`):
+### Example (`quote.md`):
 
-```text
+```markdown
 ---
 widget: "quote"
 active: true
