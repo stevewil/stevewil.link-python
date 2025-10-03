@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Steve's CV{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding-top: 60px; /* Provide space for the fixed header */
+            color: #333;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: #333;
+            text-decoration: none;
+            padding: 0 1rem;
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        {% for widget in widgets %}<a href="#{{ widget.metadata.widget }}">{{ widget.metadata.title }}</a>{% endfor %}
+    </nav>
     {% block content %}{% endblock %}
 </body>
 </html>
