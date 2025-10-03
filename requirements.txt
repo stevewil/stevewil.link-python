@@ -1,5 +1,6 @@
 Flask
-Frozen-Flask
+Flask-Frozen
 python-frontmatter
 Markdown
 python-dotenv
+gunicorn

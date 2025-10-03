@@ -1,10 +1,9 @@
 [build]
-# Command to build the site
-command = "python build.py"
-
-# Directory to publish
-publish = "build/"
+  # The command to build your site.
+  command = "python build.py"
+  # The directory to publish.
+  publish = "build"
 
 [build.environment]
-# Specify the Python version
-PYTHON_VERSION = "3.8"
+  # Specify the Python version.
+  PYTHON_VERSION = "3.11"
