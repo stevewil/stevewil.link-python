@@ -2,7 +2,6 @@ import os
 import frontmatter
 import logging
 import time
-from frontmatter import TOMLHandler
 from flask import Flask, render_template
 from datetime import datetime
 from markdown import markdown
@@ -50,9 +49,12 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f_in:
             content = f_in.read()
 
-        # Use the default YAML parser, which is more stable.
-        # The content files will be updated to use YAML syntax.
+        # The python-frontmatter library's default handler is YAML, which is
+        # what our content files are formatted in. By calling .loads() without
+        # any extra handlers, we use the most stable parsing path.
         post = frontmatter.loads(content)
+        
+        # The content body of the post is markdown, so we convert it to HTML.
         post.content = markdown(post.content)
         return post, None
     except Exception as e:
@@ -102,3 +104,8 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# This helps Flask-Frozen find the static files correctly.
+@app.route('/static/<path:path>')
+def static_files(path):
+    return app.send_static_file(path)
