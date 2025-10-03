@@ -44,8 +44,13 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f_in:
             content = f_in.read()
 
-        # Explicitly use the TOML handler as the content files use TOML syntax.
-        post = frontmatter.loads(content, handler=TOMLHandler())
+        # The content files use TOML syntax but with '---' delimiters.
+        # We must configure the TOMLHandler to use '---' instead of its
+        # default '+++' for this to work.
+        toml_handler = TOMLHandler()
+        toml_handler.START_DELIMITER = '---'
+        toml_handler.END_DELIMITER = '---'
+        post = frontmatter.loads(content, handler=toml_handler)
         post.content = markdown(post.content)
         return post
     except Exception as e:
