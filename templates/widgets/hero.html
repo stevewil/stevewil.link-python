@@ -1,9 +1,14 @@
-{% set bg = widget.metadata.get('design', {}).get('background', {}) %}
-<header id="{{ widget.metadata.widget }}" class="hero" style="
-    color: {{ '#fff' if bg.get('text_color_light') else '#000' }};
-">
-    <h1>{{ widget.metadata.title }}</h1>
-    <div class="prose">
-        {{ widget.content | safe }}
-    </div>
-</header>
+---
+widget: "hero"
+active: true
+weight: 10
+title: "Welcome to the HTML Hero"
+subtitle: "This content is rendered directly from an HTML file."
+---
+
+<p>This is a paragraph rendered from <strong>raw HTML</strong> inside the content file body.</p>
+<ul>
+    <li>HTML List Item 1</li>
+    <li>HTML List Item 2</li>
+</ul>
+<a href="#" class="button" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; margin-top: 1rem;">Click Me!</a>
