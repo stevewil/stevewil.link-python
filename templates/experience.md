@@ -1,7 +1,6 @@
 +++
 # Experience widget.
 widget = "experience"
-headless = true
 active = true
 weight = 20
 
