@@ -27,6 +27,11 @@ def date_format_filter(s, format_str):
     date_obj = s if isinstance(s, datetime) else datetime.fromisoformat(s.rstrip('Z'))
     return date_obj.strftime(format_str)
 
+@app.template_filter('markdown')
+def markdown_filter(s):
+    """Jinja2 filter to apply markdown conversion."""
+    return markdown(s)
+
 CONTENT_DIR = 'content'
 
 def get_page_data(path):
