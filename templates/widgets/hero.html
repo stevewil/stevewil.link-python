@@ -1,6 +1,5 @@
 {% set bg = widget.metadata.get('design', {}).get('background', {}) %}
 <header id="{{ widget.metadata.widget }}" class="hero" style="
-    background: linear-gradient(to right, {{ bg.get('gradient_start', '#fff') }}, {{ bg.get('gradient_end', '#eee') }});
     color: {{ '#fff' if bg.get('text_color_light') else '#000' }};
 ">
     <h1>{{ widget.metadata.title }}</h1>
