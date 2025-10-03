@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* General Body Styles */
 body {
     font-family: 'Roboto', sans-serif;
@@ -68,6 +72,60 @@ body {
     font-weight: 700;
     color: #333;
     margin-bottom: 2rem;
+}
+
+/* Hero Section Styles */
+.hero {
+    padding: 6rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.hero .prose {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Experience Widget Styles */
+.experience-container h2 {
+    text-align: center;
+}
+
+.experience-container .subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+}
+
+.experience-container .item {
+    margin-bottom: 2rem;
+    text-align: left; /* Override the centered container for item details */
+}
+
+.experience-container .item h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.25rem;
+}
+
+.experience-container .item-meta {
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.experience-container .item-date {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 0.75rem;
 }
 
 /* Content Typography */

@@ -1,20 +1,20 @@
 <section id="{{ widget.metadata.widget }}" class="widget">
     <div class="experience-container">
-        <h2 style="text-align: center;">{{ widget.metadata.title }}</h2>
+        <h2>{{ widget.metadata.title }}</h2>
         {% if widget.metadata.subtitle %}
-        <p style="text-align: center; color: #666; margin-top: -1.5rem; margin-bottom: 2rem;">{{ widget.metadata.subtitle }}</p> <!-- Keeping subtitle style for now as it's unique -->
+        <p class="subtitle">{{ widget.metadata.subtitle }}</p>
         {% endif %}
 
         {% for item in widget.metadata.experience %}
-        <div style="margin-bottom: 2rem;">
-            <h3 style="margin-bottom: 0.25rem;">{{ item.title }}</h3> <!-- Keeping specific margins for now -->
-            <div style="color: #555; margin-bottom: 0.5rem;"> 
+        <div class="item">
+            <h3>{{ item.title }}</h3>
+            <div class="item-meta">
                 <a href="{{ item.company_url }}" target="_blank" rel="noopener">{{ item.company }}</a> | {{ item.location }}
             </div>
-            <div style="color: #777; font-size: 0.9em; margin-bottom: 0.75rem;">
+            <div class="item-date">
                 {{ item.date_start | date_format(widget.metadata.date_format) }} - {{ item.date_end | date_format(widget.metadata.date_format) if item.date_end else "Present" }}
             </div>
-            <div class="prose" style="text-align: left;">{{ item.description | markdown | safe }}</div>
+            <div class="prose">{{ item.description | markdown | safe }}</div>
         </div>
         {% endfor %}
     </div>
