@@ -1,0 +1,10 @@
++
+widget = "websites"
+active = true
+weight = 40
+title = "Websites"
++
+
+* [steve.zotero.org](https://steve.zotero.org)
+* [steve.webrecorder.net](https://steve.webrecorder.net)
+* [steve.hypothes.is](https://steve.hypothes.is)

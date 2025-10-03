@@ -1,8 +1,8 @@
 +
 widget = "publications"
 active = true
-weight = 60
+weight = 80
 title = "Publications"
 +
 
-Content for the publications section goes here.
+*Coming soon...*
