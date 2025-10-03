@@ -29,13 +29,11 @@ def get_page_data(path):
             first_line = f.readline().strip()
 
         handler = TOMLHandler()
+        # Set delimiters based on the first line and encode to bytes,
+        # which is required for python-frontmatter==1.0.0.
         if first_line == '+':
-            handler.START_DELIMITER = '+'
-            handler.END_DELIMITER = '+'
-        # The default handler already uses '+++', so no 'else' is needed.
-        # We just need to ensure it's bytes for this library version.
-        handler.START_DELIMITER = handler.START_DELIMITER.encode('utf-8')
-        handler.END_DELIMITER = handler.END_DELIMITER.encode('utf-8')
+            handler.START_DELIMITER = b"+"
+            handler.END_DELIMITER = b"+"
 
         post = frontmatter.load(full_path, handler=handler)
         post.content = markdown(post.content)
