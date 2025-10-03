@@ -48,6 +48,25 @@ body {
     background-color: #f7f7f7;
 }
 
+/* Centered content container for widgets */
+.widget-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Specific styling for the experience widget container to not center text */
+.experience-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.widget h2 {
+    margin-bottom: 2rem;
+}
+
 /* Content Typography */
 .prose {
     font-size: 1.1rem;
