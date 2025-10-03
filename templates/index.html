@@ -3,23 +3,8 @@
 {% block title %}{{ title }} - Steve's CV{% endblock %}
 
 {% block content %}
-<main>
     {% for widget in widgets %}
-        {% if widget.metadata.widget == 'hero' and widget.metadata.get('design', {}).get('background') %}
-            <header class="hero" style="background: linear-gradient(to right, {{ widget.metadata.get('design', {}).get('background', {}).get('gradient_start') }}, {{ widget.metadata.get('design', {}).get('background', {}).get('gradient_end') }});">
-                <h1>{{ widget.metadata.title }}</h1>
-                <div class="hero-content">
-                    {{ widget.content | safe }}
-                </div>
-            </header>
-        {% else %}
-            <section class="widget">
-                <h2>{{ widget.metadata.title }}</h2>
-                <div class="widget-content">
-                    {{ widget.content | safe }}
-                </div>
-            </section>
-        {% endif %}
+        {% set widget_path = 'widgets/' + widget.metadata.widget + '.html' %}
+        {% include [widget_path, 'widgets/_default.html'] %}
     {% endfor %}
-</main>
 {% endblock %}

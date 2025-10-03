@@ -1,4 +1,3 @@
-+++
 # Experience widget.
 widget = "experience"
 active = true

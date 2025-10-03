@@ -68,7 +68,7 @@ def index():
         filenames = sorted(os.listdir(home_dir))
         app.logger.debug(f"Found files in content/home: {filenames}")
         for filename in filenames:
-            if filename.endswith('.md'):
+            if filename.endswith('.txt'):
                 app.logger.debug(f"Processing widget file: {filename}")
                 widget_data = get_page_data(os.path.join('home', filename))
                 if widget_data and widget_data.metadata.get('active', False):
