@@ -1,3 +1,10 @@
+---
+widget: "default"
+active: true
+weight: 40
+title: "Setup Tutorial"
+---
+
 # Tutorial: How to Set Up Your Environment
 
 Welcome to the setup tutorial! This guide will walk you through the necessary steps to configure your local development environment.

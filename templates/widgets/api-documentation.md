@@ -1,3 +1,10 @@
+---
+widget: "default"
+active: true
+weight: 60
+title: "API Reference"
+---
+
 # API Reference: `/users`
 
 This document provides details for the `/api/v1/users` endpoint.

@@ -1,3 +1,10 @@
+---
+widget: "default"
+active: true
+weight: 20
+title: "Project Phoenix"
+---
+
 # Project Phoenix
 
 **Project Phoenix** is a next-generation component library for building modern web applications.

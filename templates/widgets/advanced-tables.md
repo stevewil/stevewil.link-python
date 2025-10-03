@@ -1,3 +1,10 @@
+---
+widget: "default"
+active: true
+weight: 50
+title: "Conference Schedule"
+---
+
 # Conference Schedule
 
 Below is the schedule for the main conference day.

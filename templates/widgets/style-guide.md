@@ -1,3 +1,10 @@
+---
+widget: "default"
+active: true
+weight: 30
+title: "Style Guide"
+---
+
 # Application Style Guide
 
 This document outlines the primary color palette and typography for our application.
