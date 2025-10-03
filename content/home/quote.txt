@@ -1,0 +1,8 @@
++
+widget = "quote"
+active = true
+weight = 90
+title = "Quote"
++
+
+*"The future is already here – it's just not evenly distributed."* - William Gibson
