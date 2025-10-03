@@ -22,15 +22,22 @@ def get_page_data(path):
 @app.route("/")
 def index():
     """Renders the home page by assembling widgets."""
-    # Example: Load the 'hero' widget data
-    hero_widget = get_page_data('home/hero.md')
+    home_dir = os.path.join(CONTENT_DIR, 'home')
+    widgets = []
+    if os.path.exists(home_dir):
+        for filename in os.listdir(home_dir):
+            if filename.endswith('.md'):
+                widget_data = get_page_data(os.path.join('home', filename))
+                if widget_data and widget_data.metadata.get('active', False):
+                    widgets.append(widget_data)
     
-    # Provide a default title if the widget doesn't exist
-    page_title = "Home"
-    if hero_widget and 'title' in hero_widget.metadata:
-        page_title = hero_widget.metadata['title']
+    # Sort widgets by weight
+    widgets.sort(key=lambda w: w.metadata.get('weight', 0))
     
-    return render_template("index.html", hero=hero_widget, title=page_title)
+    # For now, we can assume the first widget is the hero for the title
+    page_title = widgets[0].metadata.get('title') if widgets else "Home"
+    
+    return render_template("index.html", widgets=widgets, title=page_title)
 
 if __name__ == "__main__":
     app.run(debug=True)
