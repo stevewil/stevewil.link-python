@@ -1,3 +1,4 @@
++
 widget = "quote"
 active = true
 weight = 70
