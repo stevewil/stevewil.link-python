@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}{{ hero.metadata.get('title', "Home") if hero else "Home" }} - Steve's CV{% endblock %}
+{% block title %}{{ title }} - Steve's CV{% endblock %}
 
 {% block content %}
-    {% if hero and hero.metadata.get('design', {}).get('background') %}
-    <header style="background: linear-gradient(to right, {{ hero.metadata.get('design', {}).get('background', {}).get('gradient_start') }}, {{ hero.metadata.get('design', {}).get('background', {}).get('gradient_end') }}); color: white; padding: 4rem 2rem; text-align: center;">
-        <h1>{{ hero.metadata.title }}</h1>
-        <div>
-            {{ hero.content | safe }}
-        </div>
-    </header>
-    {% else %}
-    <h1 style="text-align: center; padding: 4rem 2rem;">Welcome to my CV</h1>
+    {% for widget in widgets %}
+        {% set widget_path = 'widgets/' + widget.metadata.widget + '.html' %}
+        {% include widget_path ignore missing %}
     {% endif %}
 {% endblock %}

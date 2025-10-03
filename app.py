@@ -3,6 +3,7 @@ import frontmatter
 import logging
 from frontmatter import TOMLHandler
 from flask import Flask, render_template
+from datetime import datetime
 from markdown import markdown
 
 app = Flask(__name__)
@@ -16,6 +17,16 @@ logging.basicConfig(
     format='%(asctime)s %(levelname)s: %(message)s'
 )
 # Configuration
+
+@app.template_filter('date_format')
+def date_format_filter(s, format_str):
+    """Jinja2 filter to format a date string."""
+    if not s:
+        return ""
+    # The date might be a string or already a date object
+    date_obj = s if isinstance(s, datetime) else datetime.fromisoformat(s.rstrip('Z'))
+    return date_obj.strftime(format_str)
+
 CONTENT_DIR = 'content'
 
 def get_page_data(path):
