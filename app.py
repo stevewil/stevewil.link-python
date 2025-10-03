@@ -38,7 +38,7 @@ def get_page_data(path):
     """Loads and parses a Markdown file with front matter."""
     full_path = os.path.join(CONTENT_DIR, path)
     if not os.path.exists(full_path):
-        return None
+        return None, f"File not found at '{full_path}'"
 
     try:
         with open(full_path, 'r', encoding='utf-8') as f_in:
@@ -48,14 +48,15 @@ def get_page_data(path):
         # We must configure the TOMLHandler to use '---' instead of its
         # default '+++' for this to work.
         toml_handler = TOMLHandler()
-        toml_handler.START_DELIMITER = '---'
-        toml_handler.END_DELIMITER = '---'
+        # The delimiters MUST be byte strings for this library version.
+        toml_handler.START_DELIMITER = b'---'
+        toml_handler.END_DELIMITER = b'---'
         post = frontmatter.loads(content, handler=toml_handler)
         post.content = markdown(post.content)
-        return post
+        return post, None
     except Exception as e:
         app.logger.error(f"Error parsing file '{full_path}': {e}")
-        return None
+        return None, str(e)
 
 @app.route("/")
 def index():
@@ -69,16 +70,15 @@ def index():
         app.logger.debug(f"Found files in content/home: {filenames}")
         for filename in filenames:
             if filename.endswith('.txt'):
-                app.logger.debug(f"Processing widget file: {filename}")
-                widget_data = get_page_data(os.path.join('home', filename))
+                filepath = os.path.join('home', filename)
+                app.logger.debug(f"Processing widget file: {filepath}")
+                widget_data, error = get_page_data(filepath)
                 if widget_data and widget_data.metadata.get('active', False):
                     app.logger.debug(f"'{filename}' is active. Adding to widgets.")
                     widgets.append(widget_data)
-                elif widget_data:
-                    app.logger.debug(f"'{filename}' is inactive. Skipping.")
-                else:
-                    # This means get_page_data returned None due to a parsing error.
-                    errors.append(f"Failed to parse '{os.path.join('home', filename)}'. Check log/debug.log for details.")
+                elif error:
+                    # Capture the specific error message for display.
+                    errors.append(f"<strong>{filepath}:</strong> {error}")
     
     # Sort widgets by weight
     widgets.sort(key=lambda w: w.metadata.get('weight', 0))
@@ -90,7 +90,7 @@ def index():
         if errors:
             error_html = f"<h1>{error_message}</h1>"
             error_html += "<h2>The following files could not be parsed:</h2><ul>"
-            error_html += "".join([f"<li>{e}</li>" for e in errors])
+            error_html += "".join([f"<li style='margin-bottom: 0.5em;'>{e}</li>" for e in errors])
             error_html += "</ul><p>This is often due to incorrect frontmatter syntax (e.g., using YAML format for a TOML file).</p>"
             return error_html, 200
         return error_message, 200
