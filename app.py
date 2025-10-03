@@ -42,11 +42,10 @@ def get_page_data(path):
         # Default handler is YAML. If we see TOML delimiters, use TOMLHandler.
         if first_line in ('+++', '+'):
             toml_handler = TOMLHandler()
-            # Set the correct delimiter based on the file content.
-            # The default for TOMLHandler is already b'+++'.
-            if first_line == '+':
-                toml_handler.START_DELIMITER = b"+"
-                toml_handler.END_DELIMITER = b"+"
+            # The TOMLHandler in this library version defaults to '---' delimiters.
+            # We must explicitly set the correct delimiter based on the file's first line.
+            toml_handler.START_DELIMITER = first_line.encode('utf-8')
+            toml_handler.END_DELIMITER = first_line.encode('utf-8')
             post = frontmatter.load(full_path, handler=toml_handler)
         else:
             # Let frontmatter use its default YAML handler
