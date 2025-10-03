@@ -44,13 +44,6 @@ def get_page_data(path):
         with open(full_path, 'r', encoding='utf-8') as f_in:
             content = f_in.read()
 
-        # Standardize non-standard delimiters before parsing.
-        # Replace '+' and '+++' with '---' which is the default for the library.
-        if content.startswith('+++\n'):
-            content = content.replace('+++', '---', 2)
-        elif content.startswith('+\n'):
-            content = content.replace('+', '---', 2)
-
         post = frontmatter.loads(content)
         post.content = markdown(post.content)
         return post
