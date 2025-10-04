@@ -29,13 +29,7 @@
         </button>
     </nav>
     {% block content %}{% endblock %}
-    <script>
-        const hamburger = document.getElementById('hamburger-button');
-        const navLinks = document.getElementById('navbar-links');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('is-active');
-            hamburger.classList.toggle('is-active');
-        });
-    </script>
+    <!-- Main JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}?v={{ cache_buster }}"></script>
 </body>
 </html>

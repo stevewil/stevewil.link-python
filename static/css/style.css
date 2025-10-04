@@ -12,6 +12,11 @@ body {
     background-color: #fff;
 }
 
+/* Helper class to prevent scrolling when a modal/menu is open */
+.body-no-scroll {
+    overflow: hidden;
+}
+
 /* Navigation Bar */
 .navbar {
     position: fixed;
