@@ -16,6 +16,9 @@ cta:
   label: "Buy on Amazon"
 ---
 
+<div class="hero-content-left">
 <h1 class="book-title">Peacemaking with Preschoolers</h1>
 <p class="book-authors">Enrico Gnaulati, Susan North, and Heather Malley</p>
+<p class="subtitle">A Teacher's Guide to Turning Conflict into Connection</p>
 <p class="book-copyright">Copyright © 2025</p>
+</div>

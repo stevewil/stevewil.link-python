@@ -119,6 +119,12 @@ body {
     z-index: 2;
 }
 
+/* New class to left-align hero content */
+.hero-content-left {
+    text-align: left;
+    margin: 0 auto; /* Keep the block centered on the page */
+}
+
 /* Two-column hero layout */
 .hero-split-container {
     display: flex;
@@ -278,7 +284,7 @@ body {
 
 .book-copyright {
     font-size: 0.9rem;
-    color: #666;
+    color: #fff; /* Changed for hero background */
 }
 
 .book-intro-widget .prose {
