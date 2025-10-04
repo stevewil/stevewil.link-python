@@ -141,6 +141,8 @@ body {
 
     .hamburger {
         display: inline-block; /* Show hamburger on mobile */
+        position: relative; /* Needed for z-index to apply */
+        z-index: 1001; /* Ensure it's above other navbar content */
         margin-right: 2rem; /* Add space on the right to prevent cutoff */
     }
 
