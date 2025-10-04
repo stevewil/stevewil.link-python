@@ -181,6 +181,11 @@ body {
     background-color: #f7f7f7;
 }
 
+/* Ensure the hero widget doesn't get an odd/even background color */
+.widget:has(.hero) {
+    background-color: transparent !important;
+}
+
 /* Centered content container for widgets */
 .widget-container {
     max-width: 800px;
