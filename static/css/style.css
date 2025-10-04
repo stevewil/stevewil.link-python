@@ -210,17 +210,14 @@ body {
 
 /* Hero Section Styles */
 .hero {
-    padding: 6rem 2rem;
-    text-align: center;
-    min-height: 40vh; /* Ensure hero has a minimum height */
-    display: flex; /* Use flexbox for vertical alignment */
-    align-items: center; /* Center content vertically */
-}
-
-.hero {
     position: relative;
     background-size: cover;
     background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    min-height: 50vh; /* Ensure hero has a minimum height */
+    display: flex;
+    align-items: center;
 }
 
 .hero-overlay {
