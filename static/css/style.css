@@ -177,7 +177,7 @@ html {
 
 /* Ensure the hero widget doesn't get an odd/even background color */
 .widget:has(.hero) {
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 /* Specific styling for the experience widget container to not center text */
