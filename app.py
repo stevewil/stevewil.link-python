@@ -88,6 +88,8 @@ def index():
                 widget_data, error = get_page_data(filepath)
                 if widget_data and widget_data.metadata.get('active', False):
                     app.logger.debug(f"'{filename}' is active. Adding to widgets.")
+                    # Store the unique filename stem to use as an ID
+                    widget_data.metadata['id'] = os.path.splitext(filename)[0]
                     widgets.append(widget_data)
                 elif error:
                     # Capture the specific error message for display.
@@ -112,8 +114,8 @@ def index():
     
     # Create a list of navigation items for the menu
     nav_items = [
-        {'url': f"#{w.metadata.get('widget')}", 'title': w.metadata.get('title')}
-        for w in widgets if w.metadata.get('title')
+        {'url': f"#{w.metadata.get('id')}", 'title': w.metadata.get('title')}
+        for w in widgets if w.metadata.get('title') and w.metadata.get('widget') != 'hero'
     ]
     
     return render_template("index.html", widgets=widgets, title=page_title, nav_items=nav_items)
