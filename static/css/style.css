@@ -156,6 +156,7 @@ body {
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         padding: 1rem 0;
+        white-space: normal; /* Allow items to wrap in the dropdown */
     }
 
     .navbar-links.is-active {
