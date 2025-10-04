@@ -1,16 +1,16 @@
-html {
-    scroll-behavior: smooth;
-}
-
 /* General Body Styles */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding-top: 60px; /* Provide space for the fixed header */
     color: #666;
     background-color: #fff;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 /* Navigation Bar */
 .navbar {
@@ -19,7 +19,7 @@ body {
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height: 60px;    
+    height: 60px;
     z-index: 1000;
     transition: background-color 0.3s ease;
     /* Flexbox properties moved from navbar-container */
@@ -180,14 +180,6 @@ body {
     background-color: transparent !important;
 }
 
-/* Centered content container for widgets */
-.widget-container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
 /* Specific styling for the experience widget container to not center text */
 .experience-container {
     max-width: 800px;
@@ -223,15 +215,9 @@ body {
     z-index: 1;
 }
 
-.hero .widget-container {
-    position: relative;
-    z-index: 2;
-}
-
 /* New class to left-align hero content */
 .hero-content-left {
     text-align: left;
-    margin: 0 auto; /* Keep the block centered on the page */
 }
 
 /* Two-column hero layout */
