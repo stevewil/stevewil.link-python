@@ -2,7 +2,7 @@
 widget: "default"
 active: true
 weight: 30
-title: "Introduction"
+title: "Conflict is natural"
 ---
 
 <div class="book-intro-widget">
