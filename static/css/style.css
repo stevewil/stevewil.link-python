@@ -18,22 +18,16 @@ body {
     top: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 0 2rem;
     height: 60px;    
     z-index: 1000;
     transition: background-color 0.3s ease;
-}
-
-.navbar-container {
-    width: 100%;
-    max-width: 800px; /* Match the content width */
-    margin: 0 auto; /* Center the container */
+    /* Flexbox properties moved from navbar-container */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem; /* Add space between logo and links */
+    padding: 0 2rem; /* Add horizontal padding */
 }
 
 .navbar-brand img {
@@ -137,8 +131,8 @@ body {
 
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
-    .navbar-container {
-        justify-content: space-between; /* Logo left, hamburger right */
+    .navbar {
+        justify-content: space-between; /* Logo left, hamburger right on mobile */
     }
 
     .hamburger {
@@ -455,4 +449,16 @@ body {
 .review-item footer {
     font-weight: bold;
     color: #3c935f; /* Green */
+}
+
+/* --- Utility & Component Styles --- */
+
+/* For embedded videos from markdown */
+.content-video {
+    width: 100%;
+    max-width: 720px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;
 }

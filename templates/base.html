@@ -14,21 +14,19 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-container">
-            <a href="#hero" class="navbar-brand">
-                <img src="{{ url_for('static', filename='assets/title.png') }}" alt="Peacemaking with Preschoolers Title">
-            </a>
-            <div class="navbar-links" id="navbar-links">
-                {% for item in nav_items %}
-                    <a href="{{ item.url }}">{{ item.title }}</a>
-                {% endfor %}
-            </div>
-            <button class="hamburger" id="hamburger-button" aria-label="Menu" aria-controls="navbar-links">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
+        <a href="#hero" class="navbar-brand">
+            <img src="{{ url_for('static', filename='assets/title.png') }}" alt="Peacemaking with Preschoolers Title">
+        </a>
+        <div class="navbar-links" id="navbar-links">
+            {% for item in nav_items %}
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            {% endfor %}
         </div>
+        <button class="hamburger" id="hamburger-button" aria-label="Menu" aria-controls="navbar-links">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
     </nav>
     {% block content %}{% endblock %}
     <script>
