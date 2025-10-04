@@ -110,7 +110,13 @@ def index():
 
     page_title = widgets[0].metadata.get('title', "Home")
     
-    return render_template("index.html", widgets=widgets, title=page_title)
+    # Create a list of navigation items for the menu
+    nav_items = [
+        {'url': f"#{w.metadata.get('widget')}", 'title': w.metadata.get('title')}
+        for w in widgets if w.metadata.get('title')
+    ]
+    
+    return render_template("index.html", widgets=widgets, title=page_title, nav_items=nav_items)
 
 if __name__ == "__main__":
     app.run(debug=True)
