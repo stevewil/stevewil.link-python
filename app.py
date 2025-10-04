@@ -122,8 +122,3 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# This helps Flask-Frozen find the static files correctly.
-@app.route('/static/<path:path>')
-def static_files(path):
-    return app.send_static_file(path)
