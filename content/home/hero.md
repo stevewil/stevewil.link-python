@@ -19,6 +19,6 @@ cta:
 <div class="hero-content-left">
 <h1 class="book-title">Peacemaking with Preschoolers</h1>
 <p class="book-authors">Enrico Gnaulati, Susan North, and Heather Malley</p>
-<p class="subtitle">A Teacher's Guide to Turning Conflict into Connection</p>
+<p class="subtitle">Conflict Resolution to Promote Emotional Mastery and Harmonius Classrooms</p>
 <p class="book-copyright">Copyright © 2025</p>
 </div>
