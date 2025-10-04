@@ -1,33 +1,22 @@
 {% set design = widget.metadata.design %}
 {% set cta = widget.metadata.get('cta', {}) %}
-{% set cta_alt = widget.metadata.get('cta_alt', {}) %}
 
-<section id="{{ widget.metadata.widget }}" class="hero" style="
-    {% if design.background.image %}
-    background-image: url('{{ design.background.image }}');
-    {% else %}
-        {% if design.background.gradient_start and design.background.gradient_end %}
-        background: linear-gradient(to right, {{ design.background.gradient_start }}, {{ design.background.gradient_end }});
-        {% elif design.background.color %}
-        background-color: {{ design.background.color }};
-        {% endif %}
-    {% endif %}
-    color: {% if design.background.text_color_light %}#fff{% else %}#333{% endif %};
+<div class="hero" style="
+  {% if design.background.image %}
+  background-image: url('{{ design.background.image }}');
+  {% elif design.background.gradient_start and design.background.gradient_end %}
+  background: linear-gradient(to right, {{ design.background.gradient_start }}, {{ design.background.gradient_end }});
+  {% endif %}
+  color: {% if design.background.text_color_light %}#fff{% else %}#333{% endif %};
 ">
-    <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ design.background.image_darken | default(0.5) }});"></div>
-    <div class="widget-container hero-split-container">
-        <div class="hero-split-image">
-            <img src="{{ design.background.image }}" alt="Book Cover">
-        </div>
-        <div class="hero-split-content">
-            <div class="prose">
-                {{ widget.content | safe }}
-            </div>
-            <div class="hero-buttons">
-                {% if cta.url %}
-                <a href="{{ cta.url }}" class="button button-primary"><i class="{{ cta.icon_pack }} {{ cta.icon }}"></i> {{ cta.label }}</a>
-                {% endif %}
-            </div>
-        </div>
+  <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ design.background.image_darken | default(0.5) }});"></div>
+  <div class="widget-container">
+    <div class="prose">
+      {{ widget.content | safe }}
     </div>
-</section>
+    <div class="hero-buttons">
+      {% if cta.url %}
+      <a href="{{ cta.url }}" class="button button-primary">{{ cta.label }}</a>
+      {% endif %}
+    </div>
+</div>

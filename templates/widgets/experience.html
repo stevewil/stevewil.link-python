@@ -1,21 +1,19 @@
-<section id="{{ widget.metadata.widget }}" class="widget">
-    <div class="experience-container">
-        <h2>{{ widget.metadata.title }}</h2>
-        {% if widget.metadata.subtitle %}
-        <p class="subtitle">{{ widget.metadata.subtitle }}</p>
-        {% endif %}
+<div class="experience-container">
+    <h2>{{ widget.metadata.title }}</h2>
+    {% if widget.metadata.subtitle %}
+    <p class="subtitle">{{ widget.metadata.subtitle }}</p>
+    {% endif %}
 
-        {% for item in widget.metadata.experience %}
-        <div class="item">
-            <h3>{{ item.title }}</h3>
-            <div class="item-meta">
-                <a href="{{ item.company_url }}" target="_blank" rel="noopener">{{ item.company }}</a> | {{ item.location }}
-            </div>
-            <div class="item-date">
-                {{ item.date_start | date_format(widget.metadata.date_format) }} - {{ item.date_end | date_format(widget.metadata.date_format) if item.date_end else "Present" }}
-            </div>
-            <div class="prose">{{ item.description | markdown | safe }}</div>
+    {% for item in widget.metadata.experience %}
+    <div class="item">
+        <h3>{{ item.title }}</h3>
+        <div class="item-meta">
+            <a href="{{ item.company_url }}" target="_blank" rel="noopener">{{ item.company }}</a> | {{ item.location }}
         </div>
-        {% endfor %}
+        <div class="item-date">
+            {{ item.date_start | date_format(widget.metadata.date_format) }} - {{ item.date_end | date_format(widget.metadata.date_format) if item.date_end else "Present" }}
+        </div>
+        <div class="prose">{{ item.description | markdown | safe }}</div>
     </div>
-</section>
+    {% endfor %}
+</div>
