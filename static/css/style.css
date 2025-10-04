@@ -58,6 +58,109 @@ body {
     color: #4bb4e3; /* Use the primary color from the hero section */
 }
 
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hidden by default */
+    padding: 15px;
+    cursor: pointer;
+    transition-property: opacity, filter;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: "";
+    display: block;
+}
+
+.hamburger-inner::before {
+    top: -10px;
+}
+
+.hamburger-inner::after {
+    bottom: -10px;
+}
+
+/* Hamburger Active State (X) */
+.hamburger.is-active .hamburger-inner {
+    transform: rotate(45deg);
+}
+.hamburger.is-active .hamburger-inner::before {
+    top: 0;
+    opacity: 0;
+}
+.hamburger.is-active .hamburger-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between; /* Logo left, hamburger right */
+    }
+
+    .hamburger {
+        display: inline-block; /* Show hamburger on mobile */
+    }
+
+    .navbar-links {
+        display: none; /* Hide nav links by default */
+        position: absolute;
+        top: 60px; /* Position below navbar */
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+    }
+
+    .navbar-links.is-active {
+        display: flex; /* Show when active */
+    }
+
+    .navbar-links a {
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+    }
+}
+
 /* Widget Sections */
 .widget {
     padding: 4rem 2rem;
