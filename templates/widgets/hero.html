@@ -10,7 +10,7 @@
   color: {% if design.background.text_color_light %}#fff{% else %}#333{% endif %};
 ">
   <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ design.background.image_darken | default(0.5) }});"></div>
-  <div class="widget-container">
+  <div class="widget-container" style="position: relative; z-index: 2;">
     <div class="prose">
       {{ widget.content | safe }}
     </div>
