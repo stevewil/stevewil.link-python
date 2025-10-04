@@ -212,8 +212,9 @@ body {
 .hero {
     padding: 6rem 2rem;
     text-align: center;
-    border-bottom: 1px solid #eee;
-    background-color: #e37c4b; /* Lighter blue from original gradient */
+    min-height: 40vh; /* Ensure hero has a minimum height */
+    display: flex; /* Use flexbox for vertical alignment */
+    align-items: center; /* Center content vertically */
 }
 
 .hero {
