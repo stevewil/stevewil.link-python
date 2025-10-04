@@ -100,7 +100,7 @@ body {
 .hamburger-inner::after {
     width: 30px;
     height: 3px;
-    background-color: #333;
+    background-color: #3c935f; /* Changed to theme green */
     border-radius: 4px;
     position: absolute;
     transition-property: transform;
