@@ -136,6 +136,7 @@ body {
 
     .hamburger {
         display: inline-block; /* Show hamburger on mobile */
+        margin-right: 2rem; /* Add space on the right to prevent cutoff */
     }
 
     .navbar-links {
