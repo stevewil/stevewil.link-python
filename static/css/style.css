@@ -49,6 +49,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    white-space: nowrap; /* Prevent menu items from wrapping on desktop */
 }
 
 
@@ -141,7 +142,8 @@ body {
     }
 
     .hamburger {
-        display: inline-block; /* Show hamburger on mobile */
+        display: inline-block;   /* Show hamburger on mobile */
+        margin-right: -15px;     /* Move hamburger away from the edge */
     }
 
     .navbar-links {
