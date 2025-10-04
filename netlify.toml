@@ -1,9 +1,10 @@
 [build]
-  # The command to build your site.
-  command = "python build.py"
-  # The directory to publish.
+  # This command tells Netlify to install your Python dependencies and then run your build script.
+  command = "pip install -r requirements.txt && python build.py"
+  # This tells Netlify that your finished site is in the 'build' directory.
   publish = "build"
 
 [build.environment]
-  # Specify the Python version.
-  PYTHON_VERSION = "3.11"
+  # Specify the Python version you are using for development.
+  # Update this to match your local version (e.g., "3.9", "3.10").
+  PYTHON_VERSION = "3.8"
