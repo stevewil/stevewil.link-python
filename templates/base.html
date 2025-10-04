@@ -14,9 +14,14 @@
 </head>
 <body>
     <nav class="navbar">
-        {% for item in nav_items %}
-            <a href="{{ item.url }}">{{ item.title }}</a>
-        {% endfor %}
+        <a href="#hero" class="navbar-brand">
+            <img src="{{ url_for('static', filename='assets/title.png') }}" alt="Peacemaking with Preschoolers Title">
+        </a>
+        <div class="navbar-links">
+            {% for item in nav_items %}
+                <a href="{{ item.url }}">{{ item.title }}</a>
+            {% endfor %}
+        </div>
     </nav>
     {% block content %}{% endblock %}
 </body>
