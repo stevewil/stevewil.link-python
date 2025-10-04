@@ -34,6 +34,9 @@ body {
     height: 40px; /* Adjust height as needed */
     width: auto;
     display: block; /* Removes extra space below the image */
+    /* Add the requested borders */
+    border: 4px solid #F1C40F; /* Thick yellow rectangle */
+    outline: 1px solid #3c935f; /* Thin green line around it */
 }
 
 .navbar-links {
