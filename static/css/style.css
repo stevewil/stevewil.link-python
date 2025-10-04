@@ -202,16 +202,11 @@ body {
 
 /* Hero Section Styles */
 .hero {
-    padding: 6rem 2rem;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-    background-color: #e37c4b; /* Lighter blue from original gradient */
-}
-
-.hero {
     position: relative;
     background-size: cover;
     background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
 }
 
 .hero-overlay {
@@ -450,4 +445,15 @@ body {
     font-weight: bold;
     color: #3c935f; /* Green */
 }
+
+/* --- Utility & Component Styles --- */
+
+/* For embedded videos from markdown */
+.content-video {
+    width: 100%;
+    max-width: 720px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin: 0 auto;
 }
