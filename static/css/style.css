@@ -21,13 +21,19 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 0 2rem;
-    height: 60px;
+    height: 60px;    
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 800px; /* Match the content width */
+    margin: 0 auto; /* Center the container */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem; /* Add space between logo and links */
-    z-index: 1000;
-    transition: background-color 0.3s ease;
 }
 
 .navbar-brand img {
@@ -130,7 +136,7 @@ body {
 
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
-    .navbar {
+    .navbar-container {
         justify-content: space-between; /* Logo left, hamburger right */
     }
 
