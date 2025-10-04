@@ -4,7 +4,9 @@
 
 {% block content %}
     {% for widget in widgets %}
-        {% set widget_path = 'widgets/' + widget.metadata.widget + '.html' %}
-        {% include [widget_path, 'widgets/_default.html'] %}
+        <section id="{{ widget.metadata.id }}" class="widget">
+            {% set widget_path = 'widgets/' + widget.metadata.widget + '.html' %}
+            {% include [widget_path, 'widgets/_default.html'] %}
+        </section>
     {% endfor %}
 {% endblock %}
