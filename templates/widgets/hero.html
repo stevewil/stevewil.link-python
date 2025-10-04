@@ -15,23 +15,19 @@
     color: {% if design.background.text_color_light %}#fff{% else %}#333{% endif %};
 ">
     <div class="hero-overlay" style="background-color: rgba(0, 0, 0, {{ design.background.image_darken | default(0.5) }});"></div>
-    <div class="widget-container">
-        <h1>{{ widget.metadata.title }}</h1>
-        {% if widget.metadata.subtitle %}
-        <p class="subtitle">{{ widget.metadata.subtitle }}</p>
-        {% endif %}
-        
-        <div class="prose">
-            {{ widget.content | safe }}
+    <div class="widget-container hero-split-container">
+        <div class="hero-split-image">
+            <img src="{{ design.background.image }}" alt="Book Cover">
         </div>
-
-        <div class="hero-buttons">
-            {% if cta.url %}
-            <a href="{{ cta.url }}" class="button button-primary"><i class="{{ cta.icon_pack }} {{ cta.icon }}"></i> {{ cta.label }}</a>
-            {% endif %}
-            {% if cta_alt.url %}
-            <a href="{{ cta_alt.url }}" class="button button-secondary">{{ cta_alt.label }}</a>
-            {% endif %}
+        <div class="hero-split-content">
+            <div class="prose">
+                {{ widget.content | safe }}
+            </div>
+            <div class="hero-buttons">
+                {% if cta.url %}
+                <a href="{{ cta.url }}" class="button button-primary"><i class="{{ cta.icon_pack }} {{ cta.icon }}"></i> {{ cta.label }}</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>
