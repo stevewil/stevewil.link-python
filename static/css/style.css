@@ -1,21 +1,16 @@
-html {
-    scroll-behavior: smooth;
-}
-
 /* General Body Styles */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding-top: 60px; /* Provide space for the fixed header */
     color: #666;
     background-color: #fff;
 }
 
-/* Helper class to prevent scrolling when a modal/menu is open */
-.body-no-scroll {
-    overflow: hidden;
+html {
+    scroll-behavior: smooth;
 }
+
 
 /* Navigation Bar */
 .navbar {
@@ -23,16 +18,16 @@ body {
     top: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    padding: 0 2rem;
     height: 60px;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    /* Flexbox properties moved from navbar-container */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem; /* Add space between logo and links */
-    z-index: 1000;
-    transition: background-color 0.3s ease;
+    padding: 0 2rem; /* Add horizontal padding */
 }
 
 .navbar-brand img {
@@ -53,6 +48,7 @@ body {
 
 .navbar-links a {
     color: #333;
+    white-space: nowrap; /* Prevent individual links from wrapping */
     text-decoration: none;
     padding: 0 1rem;
     font-weight: 500;
@@ -98,7 +94,7 @@ body {
 .hamburger-inner::after {
     width: 30px;
     height: 3px;
-    background-color: #333;
+    background-color: #3c935f; /* Changed to theme green */
     border-radius: 4px;
     position: absolute;
     transition-property: transform;
@@ -136,14 +132,12 @@ body {
 /* Responsive Styles for Mobile */
 @media (max-width: 768px) {
     .navbar {
-        justify-content: space-between; /* Logo left, hamburger right */
+        justify-content: space-between; /* Logo left, hamburger right on mobile */
     }
 
     .hamburger {
-        display: inline-block; /* Show hamburger on mobile */
-        position: relative; /* Needed for z-index to apply */
-        z-index: 1001; /* Ensure it's above other navbar content */
-        margin-right: 2rem; /* Add space on the right to prevent cutoff */
+        display: inline-block;   /* Show hamburger on mobile */
+        margin-right: -15px;     /* Move hamburger away from the edge */
     }
 
     .navbar-links {
@@ -156,6 +150,7 @@ body {
         background-color: #fff;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         padding: 1rem 0;
+        white-space: normal; /* Allow items to wrap in the dropdown */
     }
 
     .navbar-links.is-active {
@@ -180,12 +175,9 @@ body {
     background-color: #f7f7f7;
 }
 
-/* Centered content container for widgets */
-.widget-container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+/* Ensure the hero widget doesn't get an odd/even background color */
+.widget:has(.hero) {
+    background-color: transparent;
 }
 
 /* Specific styling for the experience widget container to not center text */
@@ -209,6 +201,9 @@ body {
     background-position: center;
     padding: 6rem 2rem;
     text-align: center;
+    min-height: 50vh; /* Ensure hero has a minimum height */
+    display: flex;
+    align-items: center;
 }
 
 .hero-overlay {
@@ -220,15 +215,9 @@ body {
     z-index: 1;
 }
 
-.hero .widget-container {
-    position: relative;
-    z-index: 2;
-}
-
 /* New class to left-align hero content */
 .hero-content-left {
     text-align: left;
-    margin: 0 auto; /* Keep the block centered on the page */
 }
 
 /* Two-column hero layout */
