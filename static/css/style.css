@@ -24,7 +24,8 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 2rem; /* Add space between logo and links */
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
